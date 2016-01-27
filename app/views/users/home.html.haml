@@ -1,0 +1,37 @@
+%div.homepage-jumbotron
+  %h3.gw GW
+  %h3.book-market BOOK MARKET
+
+  = link_to('/auth/facebook', class: "facebook-link") do
+    = image_tag "/fb-login.png"
+
+  = link_to "Sign in", sign_in_path, class: "login-link"
+
+  .register-question
+    Create a new account 
+    = link_to "here", register_path
+
+%h3.category-title Textbooks
+
+.category-container 
+  = link_to(category_path(2), class: "home-category-link") do
+    %i.fa.fa-rocket.icon
+    %h4.category-name Physics
+  = link_to(category_path(3), class: "home-category-link") do
+    %i.fa.fa-globe.icon
+    %h4.category-name Biology
+  = link_to(category_path(4), class: "home-category-link") do
+    %i.fa.fa-plus.icon
+    %h4.category-name Calculus
+  = link_to(category_path(5), class: "home-category-link") do
+    %i.fa.fa-money.icon
+    %h4.category-name Economics
+  = link_to(category_path(6), class: "home-category-link") do
+    %i.fa.fa-flask.icon
+    %h4.category-name Chemistry
+  = link_to(category_path(7), class: "home-category-link") do
+    %i.fa.fa-spinner.icon
+    %h4.category-name Other
+
+.info-container 
+  This is the place for GW students to sell and buy or swap their textbooks with other students from GW. Simple, Efficient and Fast.

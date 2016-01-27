@@ -1,0 +1,364 @@
+.post-margin-top {
+  margin-top: 0px;
+}
+
+.radio-class-container {
+  margin: 0px auto 10px auto; 
+  max-width: 960px;
+  .radio-grp {
+    margin-top: 0px;
+    text-align: left;
+    
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+    
+    .title {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      color: #363636;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+    
+    .radio-btn {
+      margin-top: -6px;
+      margin-right: -4px;
+      display: inline-block;
+      &:last-of-type {
+        margin-right: 0;
+      }
+      
+      input {
+        display: none;
+      }
+      
+      input[type="radio"]:checked ~ label {
+        color: #ff5a5f;  
+      }
+      
+      label {
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: inline-block;
+        color: #363636;
+        color: #bdbdbd;
+        padding: 8px 8px;
+        border: 1px solid;
+        transition: color .3s ease;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
+}
+
+.radio-condition-container {
+  margin: 10px auto 15px auto;
+  max-width: 960px;
+
+  .radio-grp {
+    margin-top: 0px;
+    text-align: left;
+    
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+    
+    .title {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      color: #363636;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+    
+    .radio-btn {
+      margin-top: -6px;
+      margin-right: -4px;
+      display: inline-block;
+      &:last-of-type {
+        margin-right: 0;
+      }
+      
+      input {
+        display: none;
+      }
+      
+      input[type="radio"]:checked ~ label {
+        color: #ff5a5f;  
+      }
+      
+      label {
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: inline-block;
+        color: #363636;
+        color: #bdbdbd;
+        padding: 8px 8px;
+        border: 1px solid;
+        transition: color .3s ease;
+        cursor: pointer;
+        user-select: none;
+      }
+    }
+  }
+}
+
+
+//----------- file upload
+
+
+.form-file{
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  & + label{
+    color: #0D5D87;
+    cursor: pointer;
+    background-color: white;
+    display: inline-block;
+    margin-bottom: 15px;
+    span{
+      font-family: inherit;
+    }
+    .fa:before{
+      margin-right: 10px;
+      font-family: FontAwesome;
+    }    
+  }
+
+
+  &:focus + label,
+  & + label:hover{
+    outline: 1px dotted rgb(229, 151, 0);
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  .js &{
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+  }
+
+
+  + label{
+      max-width: 80%;
+      font-weight: 700;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-block;
+      overflow: hidden;
+      padding: 10px 20px;
+      outline: 1px solid #bdbdbd;
+  }
+
+
+  .no-js &{
+    display: none;
+  }
+
+  &:focus + label, &.has-focus + label{
+    outline: 1px dotted rgb(229, 151, 0);
+    outline: -webkit-focus-ring-color auto 1px;
+  }
+
+  + label{
+    color: #0D5D87;
+  }
+  &:focus + label,
+  &.has-focus + label,
+  + label:hover{
+    color: lighten(#0D5D87, 15%);
+  }  
+}
+
+
+// ------------------ show page --------------------------------------------
+
+.show-book-container{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  position: relative;
+  height: auto;
+}
+
+// textbook image wrapper
+.show-image {
+    width: 100%;
+    max-width: 660px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    background-size: 100% 330px;
+}
+
+//profile image wrapper
+.profile-circle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+}
+
+// textbook info ---------
+div.show-title {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -1px;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 24px;
+  color: #272727;
+}
+div.show-swap {
+  width: 100%;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #737373;
+  span{
+    font-size: 12px;
+  }
+}
+div.show-icon-info{
+  width: 100%;
+  text-align: center;
+  height: 70px;
+  .block-info{
+    display: inline-block;
+    margin-right: 5px;
+    width: 98px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    padding-top: 10px;
+    i{
+      height: 40px;
+      line-height: 40px;
+      display: block;
+      font-size: 35px;
+      margin: 0px;
+      padding: 0px;
+      color: #666666;
+
+    }
+    span{
+      display: block;
+      margin: 0px;
+      height: 20px;
+      font-size: 15px;
+      color: #666666;
+      line-height: 20px;
+
+    }
+  }
+}
+
+.bottom-half-container{
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  padding-bottom: 60px;
+  background-color: #F7F0E7;
+  min-height: 200px;
+  position: relative;
+  .description{  
+    font-size: 19px;
+    font-weight: 300;
+    padding-top: 25px;
+    width: 90%;
+    max-width: 300px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .creator-buttons{
+    text-align: center;
+    text-decoration: none;
+    margin-top: 100px;
+  }
+  .brown-background {
+    background-color: #F7F0E7;
+    .blue-submit{
+      color: #33adff;
+      border-color: #33adff;
+    }
+  }
+}
+
+
+// sending buttons ---------
+div.send-buttons{
+  text-align: center;
+  a.request-button{
+    display: inline-block;
+    width: 140px;
+    background-color: #ff5a5f;
+    color: white;
+    padding: 5px;
+  }
+  a.message-button{
+    display: inline-block;
+    width: 100px;
+    background-color: #80dfff;
+    color: white;
+    padding: 5px;
+  }
+}
+
+
+// seller of book name
+.seller{
+  text-align: center;
+  font-size: 15px;
+  color: #737373;
+  height: 30px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+.propic-container{
+  width: 100%;
+  position: relative;
+  .seller-name{
+    position: absolute;
+    text-align: center;
+    background-color: #e5f9ff;
+    font-size: 20px;
+    font-weight: 300;
+    top: 25px;
+    color: black;
+    height: auto;
+    width: 40%;
+    margin-bottom: 10px;
+  }  
+}
+
+
+
+

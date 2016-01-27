@@ -1,0 +1,51 @@
+%div.homepage-jumbotron{:id => "#{abreviate(@college.name)}"}
+  - if !logged_in?
+    %h3.gw= @college.name
+    %h3.book-market BOOK MARKET
+    = link_to('/auth/facebook', class: "facebook-link") do
+      = image_tag "/fb-login.png"
+
+    = link_to "Sign in", sign_in_path, class: "login-link"
+
+    .register-question
+      Create a new account 
+      = link_to "here", register_path
+
+%h3.category-title= @college.name
+%h4.category-title STUDENT BOOK MARKET
+
+- if logged_in?
+  .post-buttons
+    = link_to new_college_book_path(current_college), class: "post-button" do
+      %i.fa.fa-pencil-square-o.blue-icon
+      %p Post textbook
+  %h4.category-title OR BROWSE
+
+.category-container 
+  = link_to(college_category_path(current_college,4), class: "home-category-link") do
+    %i.fa.fa-rocket.icon
+    %h4.category-name Physics
+  = link_to(college_category_path(current_college,3), class: "home-category-link") do
+    %i.fa.fa-globe.icon
+    %h4.category-name Biology
+  = link_to(college_category_path(current_college,1), class: "home-category-link") do
+    %i.fa.fa-flask.icon
+    %h4.category-name Chemistry
+  = link_to(college_category_path(current_college,2), class: "home-category-link") do
+    %i.fa.fa-plus.icon
+    %h4.category-name Culculus
+  = link_to(college_category_path(current_college,5), class: "home-category-link") do
+    %i.fa.fa-money.icon
+    %h4.category-name Economics
+  = link_to(college_category_path(current_college,7), class: "home-category-link") do
+    %i.fa.fa-frown-o.icon
+    %h4.category-name Psychology
+  = link_to(college_category_path(current_college,8), class: "home-category-link") do
+    %i.fa.fa-pie-chart.icon
+    %h4.category-name Statistics
+  = link_to(college_category_path(current_college,6), class: "home-category-link") do
+    %i.fa.fa-spinner.icon
+    %h4.category-name Other
+
+.info-container 
+  = "This is the place for #{@college.name} students to sell and buy or swap their textbooks with other students. Simple, Efficient and Fast."

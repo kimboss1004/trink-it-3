@@ -1,0 +1,43 @@
+%br
+.textbook-titles
+  .red= Message
+  .dark-blue Thread
+
+.textbook-titles
+  .black.textbook-thread= "For: #{@thread.first.book.title}"
+
+= link_to college_user_inbox_path(current_college, current_user), class: "back-inbox" do
+  %i.fa.fa-inbox
+
+
+.messages-container
+  - @thread.each do |msg|
+    .msg-box
+      - if msg.sender.profile_images.any?
+        = image_tag msg.sender.profile_images.last.profile_image_url(:mobile).to_s, class: "square-propic"
+      - else
+        = image_tag "/no-user.png", class: "square-propic"
+      .info-container
+        .other-guy= "#{msg.sender.name}"
+        .text= msg.text
+        .time= msg.created_at.strftime("%d %b. %Y")
+
+
+
+
+- if @message.errors.any?
+  %ul
+    - @message.errors.full_messages.each do |msg|
+      %li= msg
+.signUpForm.brown-background
+  = form_for @message, url: message_college_book_path(current_college, @thread.first.book), html: { class: 'flp'} do |f|
+
+    .input-group
+      = f.text_area :text, id: "exText", class: "form-control", placeholder: "Send a message to #{current_user.other_guy(@thread.first).name}"
+      .input-group-addon
+        %i.fa.fa-pencil
+
+    %button#loading-example-btn.btn.btn-register.btn-block.blue-submit{"data-loading-text" => "Logining in...", :type => "submit"} Send
+    <hr/>
+
+

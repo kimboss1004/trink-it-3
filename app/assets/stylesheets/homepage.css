@@ -1,0 +1,220 @@
+.homepage-jumbotron{
+  width: 100%;
+  height: 300px;
+  background-image: url("/college.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  .phade{
+    background-color: rgba(0, 0, 0,0.3);
+    width: 100%;
+    height: 100%;
+  }
+  h3.gw {
+    padding-top: 50px; 
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+  }
+  h3.book-market {
+    margin: 0px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 27px;
+    font-weight: 800;
+  }
+  a.facebook-link{
+    width: 50%;
+    max-width: 250px;
+    margin-top: 30px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    img{
+      width: 100%;
+    }    
+  }
+  a.login-link{
+    width: 48%;
+    max-width: 250px;
+    padding: 8px 0px;
+    margin-top: 10px;
+    background-color: #ff5a5f;
+    background-image: -webkit-linear-gradient(top, #5ebcf7, #2c7bb0);
+    background-image: -moz-linear-gradient(top, #5ebcf7, #2c7bb0);
+    background-image: -ms-linear-gradient(top, #5ebcf7, #2c7bb0);
+    background-image: -o-linear-gradient(top, #5ebcf7, #2c7bb0);
+    background-image: linear-gradient(to bottom, #5ebcf7, #2c7bb0);
+    color: white;
+    font-weight: 800;
+    border-radius: 5px;
+    text-align: center;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  div.register-question {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(13, 13, 13, .3);
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+h3.category-title{
+  margin:0px;margin-top: 10px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 25px;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+h4.category-title{
+  margin: 0px;
+  text-align: center;
+  font-weight: 300;
+  font-size: 20px;
+  width: 100%; 
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+div.category-container{
+  width: 70%;
+  height: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  border-top: solid 1px #BFBFBF;
+  border-left: 1px solid #BFBFBF;
+}
+a.home-category-link{
+  display: inline-block;
+  width: 50%;
+  margin: 0px;
+  height: 150px;
+  border-bottom: solid 1px #BFBFBF;
+  border-right: solid 1px #BFBFBF;
+  text-align: center;
+  float: left;
+  position: relative;
+  .icon {
+    margin-top: 10px;
+    width: 58%;
+    display: inline-block;
+    font-size: 80px;
+    color: #ff5a5f;
+  }
+  .category-name {
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+    position: absolute;
+    bottom: 13px;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.info-container {
+  margin-top: 40px;
+  padding: 10% 10%;
+  width: 100%;
+  height: 200px;
+  font-size: 19px;
+  font-weight: 200;
+  color: black;
+  background-color: #F7F0E7;
+}
+
+.styled_div {
+  width: 100%;
+  height: 300px;
+  background-image: url("/home.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// Post buttons -------------------------------
+div.post-buttons{
+  text-align: center;
+  a.post-button{
+    display: inline-block;
+    width: 140px;
+    background-color: #ff5a5f;
+    color: white;
+    padding: 5px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    p {
+      display: inline;
+    }
+    i {
+      color: white;
+      margin-right: 5px;
+      display: inline;
+    }
+  }
+}
+
+
+
+// -------------------------- college index ------------------------------------
+.college-box{
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 140px;
+  line-height: 140px;
+  border-bottom: 1px solid #ccc;
+  margin: 0px;
+  overflow: hidden;
+  a{
+    font-size: 20px;
+    font-weight: 300;
+    height: 40px;
+    overflow: hidden;
+  }
+}
+
+.index{
+  height: 500px;
+  margin: 0px;
+}
+
+.no-margin{
+  margin: 0px;
+}
+
+
+#GWU{
+  background-image: url("/home.jpg"); 
+}
+
+#MC{
+background-image: url("/MCU.jpg"); 
+}
+
+
+
+
+
+
+

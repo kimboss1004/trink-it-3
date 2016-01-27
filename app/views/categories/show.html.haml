@@ -1,0 +1,42 @@
+%br
+.textbook-titles
+  .red= @category.name
+  .blue Textbooks
+  - if logged_in?
+    .post-buttons
+      = link_to new_college_book_path(current_college), class: "post-button" do
+        %i.fa.fa-pencil-square-o.blue-icon
+        %p Post
+
+- @books.each do |book|
+  = link_to college_book_path(current_college,book), class: "category-book" do 
+    .info
+      %h3= truncate(book.title, 25)
+      .swap 
+        Seller:
+        %span= book.user.name
+      .swap 
+        %span= book.created_at.strftime("%d %b. %Y")
+      .show-icon-info
+        .block-info 
+          %i.fa.fa-usd
+          %span= book.price
+        .block-info
+          %i.fa.fa-gavel
+          %span= book.condition
+        .block-info
+          %i.fa.fa-book
+          %span= book.category.name
+    - if book.images.any?
+      .textbook-image{:style => "background-image: url(#{book.images.first.image_url(:mobile).to_s});"}
+    - else
+      .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+    - if book.user.profile_images.any?
+      = image_tag book.user.profile_images.last.profile_image_url(:mobile).to_s, class: "profile-circle"
+    - else
+      = image_tag "/no-user.png", class: "profile-circle"
+    
+
+.pagination-container
+  = paginate @books

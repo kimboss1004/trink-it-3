@@ -1,0 +1,68 @@
+.show-book-container
+  #carousel-example-generic.carousel.slide{"data-interval" => "false"}
+    / Wrapper for slides
+    .carousel-inner{:role => "listbox"}
+      - @book.images.each do |image| 
+        .item{ class: "#{'active' if @book.images.index(image) == 0}"}
+          %div.show-image{:style => "background-image: url(#{image.image_url(:mobile).to_s});"}
+            .carousel-caption
+              \
+    / Controls
+    %a.left.carousel-control{"data-slide" => "prev", :href => "#carousel-example-generic", :role => "button"}
+      %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+      %span.sr-only Previous
+    %a.right.carousel-control{"data-slide" => "next", :href => "#carousel-example-generic", :role => "button"}
+      %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+      %span.sr-only Next
+  .propic-container
+    .seller-name= @book.user.name
+    - if @book.user.profile_images.any?
+      = image_tag @book.user.profile_images.last.profile_image_url(:mobile).to_s, class: "profile-circle"
+    - else
+      = image_tag "/no-user.png", class: "profile-circle"
+
+  %br
+  .show-title= @book.title
+  - unless @book.swap == "" 
+    .show-swap 
+      Swap:
+      %span= truncate(@book.swap, 30)
+  .show-swap 
+    %span= @book.created_at.strftime("%d %b. %Y")
+  .show-icon-info
+    .block-info
+      %i.fa.fa-usd
+      %span= @book.price
+    .block-info
+      %i.fa.fa-gavel
+      %span= @book.condition
+    .block-info
+      %i.fa.fa-book
+      %span= @book.category.name
+
+  .bottom-half-container
+    .description= @book.description
+
+    - if creator?(@book.user)
+      .textbook-titles.creator-buttons
+        =link_to "Edit post", edit_college_book_path(current_college,@book), class: "blue"
+        =link_to "Delete post", college_book_path(current_college,@book), method: 'delete', class: "black"
+
+
+    - if @message.errors.any?
+      %ul
+        - @message.errors.full_messages.each do |msg|
+          %li= msg
+    .signUpForm.brown-background
+      = form_for @message, url: message_college_book_path(@book.college, @book), html: { class: 'flp'} do |f|
+
+        .input-group
+          = f.text_area :text, id: "exText", class: "form-control", placeholder: "Send a message to #{@book.user.name}"
+          .input-group-addon
+            %i.fa.fa-pencil
+
+        %button#loading-example-btn.btn.btn-register.btn-block.blue-submit{"data-loading-text" => "Logining in...", :type => "submit"} Send
+        <hr/>
+
+
+

@@ -1,0 +1,71 @@
+
+- if @book.errors.any?
+  %ul
+    - @book.errors.full_messages.each do |msg|
+      %li= msg
+
+.signUpForm.post-margin-top
+  = form_for [current_college,@book], html: { multipart: true, class: 'flp'} do |f|
+
+    .radio-class-container
+      .radio-grp
+        %h4.title Textbook Class
+        = f.collection_radio_buttons(:category_id, Category.all, :id, :name, multipart: false) do |b|
+          .radio-btn
+            = b.radio_button
+            = b.label(for: "book_category_id_#{b.object.id}", class: "textbook")
+
+
+    .radio-condition-container
+      .radio-grp
+        %h4.title CONDITION
+        .radio-btn
+          = f.radio_button :condition, "Old"
+          = f.label :condition, "Old", for: "book_condition_old"
+        .radio-btn
+          = f.radio_button :condition, "Decent"
+          = f.label :condition, "Decent", for: "book_condition_decent"
+        .radio-btn
+          = f.radio_button :condition, "Perfect"
+          = f.label :condition, "Perfect", for: "book_condition_perfect"
+
+    = file_field_tag "images[]", multiple: true, type: :file, id: "edit-file", class: "form-file"
+    %label{:for => "edit-file"}
+      %span.fa.fa-upload Add Images
+
+
+    .input-group
+      = f.text_field :title, id: "exTitle", class: "form-control", placeholder: "Title"
+      .input-group-addon
+        %i.fa.fa-pencil
+
+    .input-group
+      = f.number_field :price, id: "exPrice", class: "form-control", placeholder: "$$$"
+      .input-group-addon
+        %i.fa.fa-money
+
+    .input-group
+      = f.text_area :description, id: "exDescription", class: "form-control", placeholder: "Description, Contact Info"
+      .input-group-addon
+        %i.fa.fa-pencil
+
+    .input-group
+      = f.text_field :swap, id: "exSwap", class: "form-control", placeholder: "Books you would trade for"
+      .input-group-addon
+        %i.fa.fa-book
+
+
+
+
+
+
+    = f.submit "Save Changes", id: "loading-example-btn", class: "btn btn-register btn-block"
+
+
+
+
+
+
+
+
+

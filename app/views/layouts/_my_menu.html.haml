@@ -1,0 +1,72 @@
+%nav#my-menu
+  %ul.mm-border-none
+    - if logged_in? 
+      %li.gray-sign-in
+        = link_to sign_out_path, method: "delete" do
+          %i.fa.fa-power-off.purple-icon
+          %p Log out
+      %li
+        - if current_user.in_college?
+          = link_to college_user_my_books_path(current_college, current_user) do
+            %i.fa.fa-bookmark.green-icon
+            %p My Books
+          %li
+            = link_to edit_college_user_path(current_college, current_user) do
+              %i.fa.fa-user
+              %p Account
+          %li
+            = link_to new_college_book_path(current_college) do
+              %i.fa.fa-pencil-square-o.blue-icon
+              %p Post textbook
+        - else
+          = link_to join_college_user_path(current_user) do
+            %i.fa.fa-building.green-icon
+            %p Join College
+    - if !logged_in?
+      %li.gray-sign-in
+        = link_to sign_in_path do
+          %i.fa.fa-power-off.purple-icon
+          %p Sign in
+        %li
+          = link_to register_path do
+            %i.fa.fa-building.green-icon
+            %p Register
+
+    - if college_present?
+      %li
+        = link_to '#' do
+          %i.fa.fa-book
+          %p Textbooks
+        %ul
+          %br
+          .category-container 
+            = link_to(college_category_path(current_college,4), class: "home-category-link") do
+              %i.fa.fa-rocket.icon
+              %h4.category-name Physics
+            = link_to(college_category_path(current_college,3), class: "home-category-link") do
+              %i.fa.fa-globe.icon
+              %h4.category-name Biology
+            = link_to(college_category_path(current_college,1), class: "home-category-link") do
+              %i.fa.fa-flask.icon
+              %h4.category-name Chemistry
+            = link_to(college_category_path(current_college,2), class: "home-category-link") do
+              %i.fa.fa-plus.icon
+              %h4.category-name Culculus
+            = link_to(college_category_path(current_college,5), class: "home-category-link") do
+              %i.fa.fa-money.icon
+              %h4.category-name Economics
+            = link_to(college_category_path(current_college,7), class: "home-category-link") do
+              %i.fa.fa-frown-o.icon
+              %h4.category-name Psychology
+            = link_to(college_category_path(current_college,8), class: "home-category-link") do
+              %i.fa.fa-pie-chart.icon
+              %h4.category-name Statistics
+            = link_to(college_category_path(current_college,6), class: "home-category-link") do
+              %i.fa.fa-spinner.icon
+              %h4.category-name Other
+
+
+
+
+
+

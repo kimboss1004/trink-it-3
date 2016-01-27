@@ -1,0 +1,283 @@
+
+%br
+.textbook-titles
+  .red= current_user.name
+  .dark-blue Mailbox
+
+- if @confirmed.any?
+  .inbox-header-container
+    = image_tag "/envelope.png", class: "inbox-envelope-img" 
+    Confirmed
+  #accordion.panel-group.msg-centered{"aria-multiselectable" => "true", :role => "tablist"}
+    - @confirmed.each do |proposal|
+      .panel.individual-panels
+        #headingTwo.panel-heading{:role => "tab"}
+          %h4.panel-title
+            = image_tag "/profile.jpeg", class: "sender-propic"
+            %a.collapsed{"aria-controls" => "collapse#{proposal.id}", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse#{proposal.id}", :role => "button"}
+              = "To #{current_user.other_guy(proposal).name}"
+              %div.when
+                = "#{proposal.created_at.strftime("%d %b. %Y")}"
+
+        .panel-collapse.collapse{"id" => "collapse#{proposal.id}", "aria-labelledby" => "heading#{proposal.id}", :role => "tabpanel"}
+          .panel-body.inbox-proposal-letter
+            - book = proposal.book
+            = link_to book_path(book), class: "book-letter" do 
+              .info
+                %h3= book.description
+                .swap 
+                  Swap:
+                  %span= book.swap
+                .show-icon-info
+                  .block-info
+                    %i.fa.fa-usd
+                    %span= book.price
+                  .block-info
+                    %i.fa.fa-gavel
+                    %span= book.condition
+                  .block-info
+                    %i.fa.fa-book
+                    %span= book.category.name
+              - if book.images.any?
+                .textbook-image{:style => "background-image: url(#{book.images.first.image_url(:mobile).to_s});"}
+              - else
+                .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+            .date-time-info 
+              .show-date
+                %i.fa.fa-calendar
+                .numbers= proposal.date
+              .show-time
+                %i.fa.fa-clock-o
+                .numbers= proposal.time.strftime("%r")
+
+            .msg
+              %i.fa.fa-envelope-o
+              .content= proposal.message
+
+            %h3.location Meetup Location
+
+            .location-container{ style: "background-image: url(https://provost.gwu.edu/sites/provost.gwu.edu/files/image/university-yard-bbq_460x200.jpg);"}
+              .location-info
+                %i.fa.fa-map-marker
+                .location-name= proposal.location
+
+            .footer
+              = link_to "Cancel", cancel_book_proposal_path(proposal.book, proposal), method: 'delete', class: "reject"
+              = link_to "Change Meetup", change_book_proposal_path(proposal.book, proposal), class: "resend"
+
+
+
+
+
+
+- if @changed_proposals.any?
+  .inbox-header-container
+    = image_tag "/envelope.png", class: "inbox-envelope-img" 
+    Change Meetup request
+  #accordion.panel-group.msg-centered{"aria-multiselectable" => "true", :role => "tablist"}
+    - @changed_proposals.each do |proposal|
+      .panel.individual-panels
+        #headingTwo.panel-heading{:role => "tab"}
+          %h4.panel-title
+            = image_tag "/profile.jpeg", class: "sender-propic"
+            %a.collapsed{"aria-controls" => "collapse#{proposal.id}", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse#{proposal.id}", :role => "button"}
+              = "To #{current_user.other_guy(proposal).name}"
+              %div.when
+                = "#{proposal.created_at.strftime("%d %b. %Y")}"
+
+        .panel-collapse.collapse{"id" => "collapse#{proposal.id}", "aria-labelledby" => "heading#{proposal.id}", :role => "tabpanel"}
+          .panel-body.inbox-proposal-letter
+            - book = proposal.book
+            = link_to book_path(book), class: "book-letter" do 
+              .info
+                %h3= book.description
+                .swap 
+                  Swap:
+                  %span= book.swap
+                .show-icon-info
+                  .block-info
+                    %i.fa.fa-usd
+                    %span= book.price
+                  .block-info
+                    %i.fa.fa-gavel
+                    %span= book.condition
+                  .block-info
+                    %i.fa.fa-book
+                    %span= book.category.name
+              - if book.images.any?
+                .textbook-image{:style => "background-image: url(#{book.images.first.image_url(:mobile).to_s});"}
+              - else
+                .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+            .date-time-info 
+              .show-date
+                %i.fa.fa-calendar
+                .numbers= proposal.date
+              .show-time
+                %i.fa.fa-clock-o
+                .numbers= proposal.time.strftime("%r")
+
+            .msg
+              %i.fa.fa-envelope-o
+              .content= proposal.message
+
+            %h3.location Meetup Location
+
+            .location-container{ style: "background-image: url(https://provost.gwu.edu/sites/provost.gwu.edu/files/image/university-yard-bbq_460x200.jpg);"}
+              .location-info
+                %i.fa.fa-map-marker
+                .location-name= proposal.location
+
+            .footer
+              = link_to "Cancel", cancel_book_proposal_path(proposal.book, proposal), method: 'delete', class: "reject"
+              = link_to "Change Meetup", change_book_proposal_path(proposal.book, proposal), class: "resend"
+              = link_to "Confirm", accept_book_proposal_path(proposal.book, proposal), method: 'post', class: "confirm"
+              
+              
+
+- if @new_proposals.any?
+  .inbox-header-container
+    = image_tag "/envelope.png", class: "inbox-envelope-img" 
+    New
+  #accordion.panel-group.msg-centered{"aria-multiselectable" => "true", :role => "tablist"}
+    - @new_proposals.each do |proposal|
+      .panel.individual-panels
+        #headingTwo.panel-heading{:role => "tab"}
+          %h4.panel-title
+            = image_tag "/profile.jpeg", class: "sender-propic"
+            %a.collapsed{"aria-controls" => "collapse#{proposal.id}", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse#{proposal.id}", :role => "button"}
+              = "To #{current_user.other_guy(proposal).name}"
+              %div.when
+                = "#{proposal.created_at.strftime("%d %b. %Y")}"
+
+        .panel-collapse.collapse{"id" => "collapse#{proposal.id}", "aria-labelledby" => "heading#{proposal.id}", :role => "tabpanel"}
+          .panel-body.inbox-proposal-letter
+            - book = proposal.book
+            = link_to book_path(book), class: "book-letter" do 
+              .info
+                %h3= book.description
+                .swap 
+                  Swap:
+                  %span= book.swap
+                .show-icon-info
+                  .block-info
+                    %i.fa.fa-usd
+                    %span= book.price
+                  .block-info
+                    %i.fa.fa-gavel
+                    %span= book.condition
+                  .block-info
+                    %i.fa.fa-book
+                    %span= book.category.name
+              - if book.images.any?
+                .textbook-image{:style => "background-image: url(#{book.images.first.image_url(:mobile).to_s});"}
+              - else
+                .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+            .date-time-info 
+              .show-date
+                %i.fa.fa-calendar
+                .numbers= proposal.date
+              .show-time
+                %i.fa.fa-clock-o
+                .numbers= proposal.time.strftime("%r")
+
+            .msg
+              %i.fa.fa-envelope-o
+              .content= proposal.message
+
+            %h3.location Meetup Location
+
+            .location-container{ style: "background-image: url(https://provost.gwu.edu/sites/provost.gwu.edu/files/image/university-yard-bbq_460x200.jpg);"}
+              .location-info
+                %i.fa.fa-map-marker
+                .location-name= proposal.location
+
+            .footer
+              = link_to "Cancel", cancel_book_proposal_path(proposal.book, proposal), method: 'delete', class: "reject"
+              = link_to "Change Meetup", change_book_proposal_path(proposal.book, proposal), class: "resend"
+              = link_to "Confirm", accept_book_proposal_path(proposal.book, proposal), method: 'post', class: "confirm"
+
+
+
+- if @sent_proposals.any?
+  .inbox-header-container
+    = image_tag "/envelope.png", class: "inbox-envelope-img" 
+    Sent
+  #accordion.panel-group.msg-centered{"aria-multiselectable" => "true", :role => "tablist"}
+    - @sent_proposals.each do |proposal|
+
+      .panel.individual-panels
+        #headingTwo.panel-heading{:role => "tab"}
+          %h4.panel-title
+            = image_tag "/profile.jpeg", class: "sender-propic"
+            %a.collapsed{"aria-controls" => "collapse#{proposal.id}", "aria-expanded" => "false", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "#collapse#{proposal.id}", :role => "button"}
+              = "To #{current_user.other_guy(proposal).name}"
+              %div.when
+                = "#{proposal.created_at.strftime("%d %b. %Y")}"
+
+
+        .panel-collapse.collapse{"id" => "collapse#{proposal.id}", "aria-labelledby" => "heading#{proposal.id}", :role => "tabpanel"}
+          .panel-body.inbox-proposal-letter
+            - book = proposal.book
+            = link_to book_path(book), class: "book-letter" do 
+              .info
+                %h3= book.description
+                .swap 
+                  Swap:
+                  %span= book.swap
+                .show-icon-info
+                  .block-info
+                    %i.fa.fa-usd
+                    %span= book.price
+                  .block-info
+                    %i.fa.fa-gavel
+                    %span= book.condition
+                  .block-info
+                    %i.fa.fa-book
+                    %span= book.category.name
+              - if book.images.any?
+                .textbook-image{:style => "background-image: url(#{book.images.first.image_url(:mobile).to_s});"}
+              - else
+                .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+            .date-time-info 
+              .show-date
+                %i.fa.fa-calendar
+                .numbers= proposal.date
+              .show-time
+                %i.fa.fa-clock-o
+                .numbers= proposal.time.strftime("%r")
+
+            .msg
+              %i.fa.fa-envelope-o
+              .content= proposal.message
+
+            %h3.location Meetup Location
+
+            .location-container{ style: "background-image: url(https://provost.gwu.edu/sites/provost.gwu.edu/files/image/university-yard-bbq_460x200.jpg);"}
+              .location-info
+                %i.fa.fa-map-marker
+                .location-name= proposal.location
+
+            .footer
+              = link_to "Cancel", cancel_book_proposal_path(proposal.book, proposal), method: 'delete', class: "reject"
+              = link_to "Change Meetup", change_book_proposal_path(proposal.book, proposal), class: "resend"
+
+
+
+
+
+
+
+
+    
+
+
+    
+
+
+
+
+    

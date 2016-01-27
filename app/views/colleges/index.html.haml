@@ -1,0 +1,27 @@
+%div.homepage-jumbotron
+  .phade
+    %h3.gw Trink-it
+    %h3.book-market BOOK MARKET
+    - if !logged_in?
+      = link_to('/auth/facebook', class: "facebook-link") do
+        = image_tag "/fb-login.png"
+
+      = link_to "Sign in", sign_in_path, class: "login-link"
+
+      .register-question
+        Create a new account 
+        = link_to "here", register_path
+
+%h3.category-title STUDENT BOOK MARKET
+
+.info-container.no-margin
+  = "This is the place for students to sell, buy, or swap their textbooks with other students of the same college. Simple, Efficient and Fast."
+
+- College.all.each do |college| 
+  .college-box
+    = link_to college.name, college_path(college)
+
+
+.info-container.index 
+
+

@@ -1,0 +1,14 @@
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    - if name == 'success'
+      .flash.clickhide.alert.alert-success.alert-dismissable{:role => "alert"}
+        %button.close{"data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"}
+          %span.sr-only Close
+        %p.lead= msg
+    - elsif name == 'error'
+      .flash.clickhide.alert.alert-danger.alert-dismissable{:role => "alert"}
+        %button.close{"data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"}
+          %span.sr-only Close
+        %p.lead= msg

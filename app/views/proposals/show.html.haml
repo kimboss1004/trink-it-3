@@ -1,0 +1,52 @@
+.request-letter 
+  .header 
+    From 
+    = @proposal.sender.name
+    , To
+    = @proposal.reciever.name
+    = image_tag "/profile.jpeg", class: "sender-propic"
+
+  = link_to "#", class: "book-letter" do 
+    .info
+      %h3= @book.description
+      .swap 
+        Swap:
+        %span= @book.swap
+      .show-icon-info
+        .block-info
+          %i.fa.fa-usd
+          %span= @book.price
+        .block-info
+          %i.fa.fa-gavel
+          %span= @book.condition
+        .block-info
+          %i.fa.fa-book
+          %span= @book.category.name
+    - if @book.images.any?
+      .textbook-image{:style => "background-image: url(#{@book.images.first.image_url(:mobile).to_s});"}
+    - else
+      .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+  .date-time-info 
+    .show-date
+      %i.fa.fa-calendar
+      .numbers= @proposal.date
+    .show-time
+      %i.fa.fa-clock-o
+      .numbers= @proposal.time.to_formatted_s(:short)
+
+  .msg
+    %i.fa.fa-envelope-o
+    .content= @proposal.message
+
+  %h3.location Meetup Location
+
+  .location-container{ style: "background-image: url(https://provost.gwu.edu/sites/provost.gwu.edu/files/image/university-yard-bbq_460x200.jpg);"}
+    .location-info
+      %i.fa.fa-map-marker
+      .location-name= @proposal.location
+
+  .footer
+    = link_to "Change Meetup conditions", change_book_proposal_path(@book,@proposal), class: "resend"
+    %a.reject{href: ""} Cancel
+    

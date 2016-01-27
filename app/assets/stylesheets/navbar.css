@@ -1,0 +1,161 @@
+#my-menu {
+  background-color: #FBFBFB;
+  li {
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
+
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .mm-listview li {
+    border: none;
+  }
+
+  p {
+    display: inline;
+    font-size: 18px;
+  }
+  i {
+    color: #ff5a5f;
+    font-size: 18px;
+    margin-right: 10px;
+  }
+  i.add-class {
+    color: #59ACFF;
+    font-size: 13px;
+  }
+  .no-icon {
+    margin-left: 30px;
+  }
+  .blue-icon{
+    color: #00ccff;
+  }
+  .green-icon{
+    color: #00cc00;
+  }
+  .purple-icon{
+    color: #9966ff;
+  }
+
+
+
+  h3.category-title{
+    text-align: center;
+    font-weight: 300;
+    font-size: 30px;
+  }
+
+  div.category-container{
+    width: 80%;
+    height: 450px;
+    border: none;
+  }
+  a.home-category-link{
+    display: inline-block;
+    width: 50%;
+    margin: 0px;
+    height: 150px;
+    border: none;
+    text-align: center;
+    float: left;
+    position: relative;
+    .icon {
+      margin-top: 10px;
+      width: 58%;
+      display: inline-block;
+      font-size: 80px;
+      color: white;
+    }
+    .category-name {
+      font-size: 20px;
+      font-weight: 300;
+      color: white;
+      position: absolute;
+      bottom: 13px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .info-container {
+    margin-top: 40px;
+    padding: 10% 10%;
+    width: 100%;
+    height: 200px;
+    font-size: 19px;
+    font-weight: 200;
+    color: black;
+    background-color: #F7F0E7;
+  }
+
+  .styled_div {
+    width: 100%;
+    height: 300px;
+    background-image: url("/home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+// -------------------- navbar ---------------------------------------------
+
+.trinkit-navbar {
+  width: 100%;
+  height: 50px;
+  border-bottom: #E4E4E4 1px solid;
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+  position: relative;
+  background-color: white;
+  a.logo {
+    display: block;
+    margin: 0px;
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    font-weight: 800;
+    font-size: 22px;
+    color: #ff5a5f;
+    text-decoration: none;
+  }
+  .icon-link{
+    position: absolute;
+    width: 60px;
+    left: 10px;
+    top: 12px;
+    color: #ff5a5f;
+    font-size: 20px;
+    padding: 0px;
+    margin: 0px;
+  }
+  span.green{
+    color: #00cc66;
+  }
+}
+
+// ------------------------ foot ----------------
+
+footer#footer{
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  background-color: #ff5a5f;
+  text-align: right;
+  font-size: 18px;
+  color: white;
+  padding-right: 10%;
+}
+
+.footer-space {
+  height: 70px;
+  width: 100%;
+}
+
+
+
+
+
+
+

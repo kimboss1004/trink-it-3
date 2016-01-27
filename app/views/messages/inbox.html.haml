@@ -1,0 +1,36 @@
+%br
+.textbook-titles
+  .red= current_user.name
+  .dark-blue Mailbox
+
+
+- if @messages_array.any?
+  .messages-container
+    - @messages_array.each do |sub_array|
+      = link_to college_user_thread_path(current_college,current_user,sub_array.first), class: "msg-box #{(sub_array.first.viewed ? 'viewed' : 'unviewed')}" do
+        .other-guy= "#{current_user.other_guy(sub_array.first).name} (#{sub_array.size})"
+        .text= truncate(sub_array.first.text, 40)
+        .time= sub_array.first.created_at.strftime("%d %b. %Y")
+        - if current_user.other_guy(sub_array.first).profile_images.any?
+          = image_tag current_user.other_guy(sub_array.first).profile_images.last.profile_image_url(:mobile).to_s, class: "square-propic"
+        - else
+          = image_tag "/no-user.png", class: "square-propic"
+
+  / .msg-box 
+  /   .text I'm wondering about the books condition compared to the
+  /   .other-guy Tayron lyn
+  /   - if current_user.profile_images.any?
+  /     = image_tag current_user.profile_images.last.profile_image_url(:mobile).to_s, class: "square-propic"
+  /   - else
+  /     = image_tag "/no-user.png", class: "square-propic"
+  /   .time January 5 2105
+
+  / .msg-box
+  /   .text I'm wondering about the books condition compared to the
+  /   .other-guy Etoboii
+  /   - if current_user.profile_images.any?
+  /     = image_tag current_user.profile_images.last.profile_image_url(:mobile).to_s, class: "square-propic"
+  /   - else
+  /     = image_tag "/no-user.png", class: "square-propic"
+  /   .time January 5 2105
+

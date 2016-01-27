@@ -1,0 +1,97 @@
+
+.signUpForm{
+  overflow: hidden;
+  background-color: #fff;
+  max-width: 500px;
+  width: 95%;
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  span{
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  hr{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .facebook-link{
+    width: 58%;
+    max-width: 250px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    img{
+      width: 100%;
+    }    
+  }
+  a.facebook-link-register{
+    width: 75%;
+    max-width: 250px;
+    margin-top: 30px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    img{
+      width: 100%;
+    }  
+  }  
+}
+
+img{
+
+}
+        
+form.flp{
+  padding: 2.2rem 2rem;
+  .input-group{
+    margin-bottom: 1.6rem;
+    
+    .input-group-addon{
+      border-radius: 0;
+    }
+      
+    .fa-lock{
+      font-size: 18px;
+      width: 14px;
+    }
+
+  }
+
+    
+  #exEmail, #exPassword{
+    border-radius: 0;
+    height: 36px;
+    
+    &:focus{
+      box-shadow: none;
+    }
+  }
+
+    
+  .btn{
+    margin-bottom: 1.4rem;
+    border-radius: 0;
+    color: #ff5a5f;
+    border: #ff5a5f 1px solid;
+    background-color: white;
+  }
+  .btn-register{
+    margin-bottom: 1.4rem;
+    border-radius: 0;
+    color: #00CC00;
+    border: #00CC00 1px solid;
+    background-color: white;
+  }
+      
+  a{
+    font-size: 11px;  
+  }
+}
+

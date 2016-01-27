@@ -1,0 +1,24 @@
+.signUpForm
+  = form_tag sessions_path, method: 'post', class: 'flp' do
+    .input-group.has-feedback
+      %input#exEmail.form-control{:name => "email_address", :placeholder => "Email", :type => "email"}
+        .input-group-addon
+          %i.fa.fa-envelope
+    .input-group
+      %input#exPassword.form-control{:name => "password",:placeholder => "Password", :type => "password"}
+        .input-group-addon
+          %i.fa.fa-lock
+    %button#loading-example-btn.btn.btn-block{"data-loading-text" => "Logining in...", :type => "submit"} Login
+    <hr/>
+    = link_to('/auth/facebook', class: "facebook-link") do
+      = image_tag "/fb-login.png"
+
+    = link_to "Dont have an account? Click here", register_path
+
+
+
+
+
+
+
+

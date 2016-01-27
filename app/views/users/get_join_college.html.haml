@@ -1,0 +1,22 @@
+ 
+- if @user.errors.any?
+  %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+.signUpForm
+  = form_for @user, url: save_college_user_path(@user), html: { class: 'flp'} do |f|
+
+    .radio-class-container
+      .radio-grp
+        %h4.title Select your College
+        = f.collection_radio_buttons(:college_id, College.all, :id, :name, multipart: false) do |b|
+          .radio-btn
+            = b.radio_button
+            = b.label(for: "user_college_id_#{b.object.id}", class: "textbook")
+
+    %button#loading-example-btn.btn.btn-register.btn-block{"data-loading-text" => "Logining in...", :type => "submit"} Join
+    <hr/>
+
+
+
+

@@ -1,0 +1,71 @@
+- if @proposal.errors.any?
+  %ul
+    - @proposal.errors.full_messages.each do |msg|
+      %li= msg
+
+.request-letter 
+  .header 
+    Change Meetup Conditions
+    = image_tag "/profile.jpeg", class: "sender-propic"
+
+  = link_to "#", class: "book-letter" do 
+    .info
+      %h3= @book.description
+      .swap 
+        Swap:
+        %span= @book.swap
+      .show-icon-info
+        .block-info
+          %i.fa.fa-usd
+          %span= @book.price
+        .block-info
+          %i.fa.fa-gavel
+          %span= @book.condition
+        .block-info
+          %i.fa.fa-book
+          %span= @book.category.name
+    - if @book.images.any?
+      .textbook-image{:style => "background-image: url(#{@book.images.first.image_url(:mobile).to_s});"}
+    - else
+      .textbook-image{:style => "background-image: url('/no_image.jpg');"}  
+
+  = form_for [@book,@proposal], url: change_book_proposal_path, html: { multipart: true, class: 'flp skehdule-form', id: "scheduleForm"} do |f|
+    .input-group.date-group
+      .date-label
+        %i.fa.fa-calendar
+      %fieldset.date.input-group
+        %input#input_text{:type => "text", placeholder: (@proposal.date ? @proposal.date : "Date")}
+        = f.text_field :date, id: "input_date", placeholder: "Bla"
+
+    .input-group
+      .input-group-addon.time-addon
+        Time
+        %i.fa.fa-clock-o
+      = f.time_field :time, id: "exEmail", class: "form-control", placeholder: "Time"
+
+    .input-group
+      .input-group-addon
+        %i.fa.fa-envelope-o
+      = f.text_area :message, rows: 10, id: "exEmail", class: "form-control", placeholder: "Message ..."
+
+    %h4.location-label Where
+    .cc-selector
+      = f.radio_button :location, "Kogan Plaza",{ id: "Kogan Plaza", multiple: true}
+      = label_tag "Kogan Plaza", nil, class: "drinkcard-cc kogan", for: "Kogan Plaza"
+      = f.radio_button :location, "Funger Entrance", {id: "funger-entrance", multiple: true}
+      = label_tag "Funger Entr.", nil, class: "drinkcard-cc funger", for: "funger-entrance"
+      = f.radio_button :location, "University Yard", {id: "university-yard", multiple: true}
+      = label_tag "University yd.", nil, class: "drinkcard-cc university", for: "university-yard"
+      = f.radio_button :location, "Other", {id: "other-choice", multiple: true}
+      %label.drinkcard-cc.other-location{for: "other-choice"} 
+        Other
+        .input-group
+          = f.text_field :location, id: "exEmail", class: "form-control", placeholder: "Where?", multiple: true
+          .input-group-addon
+            %i.fa.fa-map-marker
+
+
+
+  .footer
+    %a.resend#resend Send Changes
+

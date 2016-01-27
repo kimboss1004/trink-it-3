@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "slidebar";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ @import "navbar";
+ @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+ @import "homepage";
+ @import "login";
+ @import "book";
+ @import "category";
+ @import "skehdule";
+ @import "inbox-proposal";
+ @import "inbox-messages";
+
+
+ html, body {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  padding: 0px;
+  margin: 0px;
+  background-color: #f2f2f2;
+}
+
+.pagination-container {
+  text-align: center;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 70px;
+}
+
+
+ .flash {
+  position: fixed;
+  width: 95%;
+  border-radius: 3px;
+  top: 30px;
+  left: 2%;
+  z-index: 1000;
+  text-align: center;
+ }

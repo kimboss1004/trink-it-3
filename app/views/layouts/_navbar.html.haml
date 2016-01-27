@@ -1,0 +1,9 @@
+%nav.navbar.trinkit-navbar
+  - if current_college || @college
+    = link_to college_path((@college ? @college : current_college)), class: "logo" do
+      Trink-it
+      %span.green= abreviate((@college ? @college.name : current_college.name))
+  - else
+    = link_to "Trink-it", root_path, class: "logo"
+  %a.bar.icon-link{:href => "#my-menu"}
+    %i.fa.fa-bars

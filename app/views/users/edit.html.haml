@@ -1,0 +1,35 @@
+- if current_user.errors.any?
+  %ul
+    - current_user.errors.full_messages.each do |msg|
+      %li= msg
+.signUpForm
+  = form_for [current_user.college, current_user], html: { multipart: true, class: 'flp'} do |f|
+
+    = file_field_tag "profile_images[]", multiple: true, type: :file, id: "edit-file", class: "form-file"
+    %label{:for => "edit-file"}
+      %span.fa.fa-upload Upoad Pro-pic
+
+    .input-group
+      = f.text_field :name, id: "exEmail", class: "form-control", placeholder: "Full Name"
+      .input-group-addon
+        %i.fa.fa-user
+    .input-group.has-feedback
+      = f.email_field :email_address, id: "exEmail", class: "form-control", placeholder: "Email"
+      .input-group-addon
+        %i.fa.fa-envelope
+    .input-group
+      = f.password_field :password, id: "exPassword", class: "form-control", placeholder: "Password"
+      .input-group-addon
+        %i.fa.fa-lock
+    %button#loading-example-btn.btn.btn-register.btn-block{"data-loading-text" => "Logining in...", :type => "submit"} Save Changes
+
+.bottom-half-container
+  .description= "Student at #{current_user.college.name}"
+  - if current_user.profile_images.any?
+    = image_tag current_user.profile_images.last.profile_image_url(:mobile).to_s, class: "profile-circle"
+  - else
+    = image_tag "/no-user.png", class: "profile-circle"
+
+
+
+

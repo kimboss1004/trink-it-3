@@ -1,0 +1,25 @@
+
+- if @user.errors.any?
+  %ul
+    - @user.errors.full_messages.each do |msg|
+      %li= msg
+.signUpForm
+  = form_for @user, html: { class: 'flp'} do |f|
+    .input-group
+      = f.text_field :name, id: "exEmail", class: "form-control", placeholder: "Full Name"
+      .input-group-addon
+        %i.fa.fa-user
+    .input-group.has-feedback
+      = f.email_field :email_address, id: "exEmail", class: "form-control", placeholder: "Email"
+      .input-group-addon
+        %i.fa.fa-envelope
+    .input-group
+      = f.password_field :password, id: "exPassword", class: "form-control", placeholder: "Password"
+      .input-group-addon
+        %i.fa.fa-lock
+    %button#loading-example-btn.btn.btn-register.btn-block{"data-loading-text" => "Logining in...", :type => "submit"} Register
+    <hr/>
+    = link_to('/auth/facebook', class: "facebook-link-register") do
+      = image_tag "/facebook-register.png"
+
+
